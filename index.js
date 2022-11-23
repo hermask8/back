@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import bodyParser from "body-parser";
-import cors from "cors";
+//import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
@@ -14,19 +14,19 @@ import ChatRoute from './routes/ChatRoute.js'
 import MessageRoute from './routes/MessageRoute.js'
 
 const app = express();
-
+const cors = require('cors');
 // middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(morgan("common"));
 app.use(cors());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,access-token");
-  next();
-});
+//app.use(function(req, res, next) {
+ // res.header("Access-Control-Allow-Origin", "*");
+ // res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+ // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,access-token");
+ // next();
+//});
 
 // to serve images inside public folder
 app.use(express.static('public')); 
